@@ -7,7 +7,9 @@ if command -v docker &> /dev/null; then
     docker --version
 
 
-
+  #remove docker images
+  docker rm -vf $(docker ps -aq)
+  docker rmi -f $(docker images -aq)
    
    # clone tutor from github
     git clone https://github.com/SRDeveloperVishal/tutor_13_clone.git
@@ -140,5 +142,3 @@ else
    tutor local settheme edx-reborn-indigo
 
 fi
-
-
