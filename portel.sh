@@ -7,35 +7,9 @@ if command -v docker &> /dev/null; then
     docker --version
 
 
-#  # take input from user
-#     echo "Enter LMS HOST Name:"
-#     read LMS_HOST
-#     echo "Enter CMS HOST Name:"
-#     read CMS_HOST
-#     echo "Enter Course Email:"
-#     read COURSE_EMAIL
-#     echo "Enter SMTP HOST:"
-#     read SMTP_HOST
-#     echo "Enter SMTP USERNAME:"
-#     read SMTP_USERNAME
-#     echo "Enter SMTP PASSWORD:"
-#     read SMTP_PASSWORD
-#     echo "Enter CONTACT EMAIL:"
-#     read CONTACT_EMAIL
 
-
-#     # tutor config for portel
-
-#     tutor config save --set CMS_HOST="$CMS_HOST"  \
-#     --set LMS_HOST="$LMS_HOST" \
-#     --set COURSE_EMAIL="$COURSE_EMAIL"\
-#     --set SMTP_HOST="$SMTP_HOST" \
-#     --set SMTP_PORT=587 \
-#     --set SMTP_USE_TLS=true \
-#     --set SMTP_USERNAME="$SMTP_USERNAME" \
-#     --set SMTP_PASSWORD="$SMTP_PASSWORD" \
-#     --set CONTACT_EMAIL="$CONTACT_EMAIL"
-    # clone tutor from github
+   
+   # clone tutor from github
     git clone https://github.com/SRDeveloperVishal/tutor_13_clone.git
 
     # change into tutor dic
@@ -50,16 +24,28 @@ if command -v docker &> /dev/null; then
     # take input from user
     echo "Enter LMS_HOST Name:"
     read LMS_HOST
-    echo "Enter CMS_HOST Name:"
-    read CMS_HOST
     echo "Enter Course Email:"
     read COURSE_EMAIL
+    echo "Enter SMTP HOST:"
+    read SMTP_HOST
+    echo "Enter SMTP USERNAME:"
+    read SMTP_USERNAME
+    echo "Enter SMTP PASSWORD:"
+    read SMTP_PASSWORD
+    echo "Enter CONTACT EMAIL:"
+    read CONTACT_EMAIL
   # tutor config for portel
     
 
-   tutor config save --set CMS_HOST="$CMS_HOST"  \
-   --set LMS_HOST="$LMS_HOST"\
-   --set COURSE_EMAIL=$COURSE_EMAIL
+   tutor config save --set CMS_HOST="studio.$LMS_HOST.rcmoocs.in"  \
+   --set LMS_HOST="$LMS_HOST.rcmoocs.in"\
+   --set COURSE_EMAIL=$COURSE_EMAIL \
+   --set SMTP_HOST="$SMTP_HOST" \
+   --set SMTP_PORT=587 \
+   --set SMTP_USE_TLS=true \
+   --set SMTP_USERNAME="$SMTP_USERNAME" \
+   --set SMTP_PASSWORD="$SMTP_PASSWORD" \
+   --set CONTACT_EMAIL="$CONTACT_EMAIL"
 
    #tutor build 
    tutor local start -d
@@ -118,8 +104,6 @@ else
     # take input from user
     echo "Enter LMS HOST Name:"
     read LMS_HOST
-    echo "Enter CMS HOST Name:"
-    read CMS_HOST
     echo "Enter Course Email:"
     read COURSE_EMAIL
     echo "Enter SMTP HOST:"
@@ -133,16 +117,17 @@ else
 
 
     # tutor config for portel
+   tutor config save --set CMS_HOST="studio.$LMS_HOST.rcmoocs.in"  \
+   --set LMS_HOST="$LMS_HOST.rcmoocs.in"\
+   --set COURSE_EMAIL=$COURSE_EMAIL \
+   --set SMTP_HOST="$SMTP_HOST" \
+   --set SMTP_PORT=587 \
+   --set SMTP_USE_TLS=true \
+   --set SMTP_USERNAME="$SMTP_USERNAME" \
+   --set SMTP_PASSWORD="$SMTP_PASSWORD" \
+   --set CONTACT_EMAIL="$CONTACT_EMAIL"
 
-    tutor config save --set CMS_HOST="$CMS_HOST"  \
-    --set LMS_HOST="$LMS_HOST" \
-    --set COURSE_EMAIL="$COURSE_EMAIL"\
-    --set SMTP_HOST="$SMTP_HOST" \
-    --set SMTP_PORT=587 \
-    --set SMTP_USE_TLS=true \
-    --set SMTP_USERNAME="$SMTP_USERNAME" \
-    --set SMTP_PASSWORD="$SMTP_PASSWORD" \
-    --set CONTACT_EMAIL="$CONTACT_EMAIL"
+
 
   
    # tutor build 
@@ -155,6 +140,5 @@ else
    tutor local settheme edx-reborn-indigo
 
 fi
-
 
 
