@@ -1,6 +1,6 @@
-# portel
-cd portel
-# Move portel.sh 
+# portal
+cd portal
+# Move portal.sh 
 mv portel.sh /home/ubuntu/
-# execute portel.sh
-./portel.sh
+# execute portal.sh
+./portal.sh
