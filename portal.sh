@@ -97,5 +97,5 @@
   tutor local stop && tutor local start -d
 
 
-  echo "Work complete your $LMS_HOST portle is ready"
+  echo "Work complete your $LMS_HOST portal is ready"
   echo "Thank you !!"
