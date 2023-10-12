@@ -89,5 +89,3 @@
    # tutor settheme 
    tutor local settheme edx-reborn-indigo
 
-
-fi
