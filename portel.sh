@@ -51,7 +51,13 @@
     # remove exisitng tutor 
     sudo rm -rf .local/share/tutor
 
-# Now you can safely move or copy 'tutor/' to the destination directory
+    # git clone tutor binary
+    sudo curl -L "https://github.com/overhangio/tutor/releases/download/v13.1.5/tutor-$(uname -s)_$(uname -m)" -o /usr/local/bin/tutor
+   
+     # give permission to tutor user
+    sudo chmod 0755 /usr/local/bin/tutor
+    
+    # Now you can safely move or copy 'tutor/' to the destination directory
     mv tutor .local/share/
 
     # take input from user
@@ -88,4 +94,3 @@
 
    # tutor settheme 
    tutor local settheme edx-reborn-indigo
-
