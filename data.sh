@@ -17,7 +17,8 @@ desired_output=$(echo "$output" | awk -F'course-v1:' '{print $2}' | awk -F'+' '{
 #echo "Extracted output has been saved to extracted_output.txt"
 
 # access docker tutor lms
-docker cp tutor_local-lms-1:/openedx/media/$desired_output .
+
+docker cp tutor_local-lms-1:/openedx/media/$desired_output /home/ubuntu/.
 
 # Define the path to your config.yml file
 CONFIG_FILE="/home/ubuntu/.local/share/tutor/config.yml"
@@ -44,7 +45,13 @@ docker exec $MYSQL_CONTAINER mysql -u $DB_USER -p$DB_PASSWORD -e "$QUERY1"
 docker exec $MYSQL_CONTAINER mysql -u $DB_USER -p$DB_PASSWORD -e "$QUERY2"
 docker exec $MYSQL_CONTAINER mysql -u $DB_USER -p$DB_PASSWORD -e "$QUERY3"
 
+mkdir mysql-files
+
 # Copy the SQL query results to your current directory
-docker cp $MYSQL_CONTAINER:$OUTPUT_DIR/1.csv .
-docker cp $MYSQL_CONTAINER:$OUTPUT_DIR/2.csv .
-docker cp $MYSQL_CONTAINER:$OUTPUT_DIR/3.csv .
+docker cp $MYSQL_CONTAINER:$OUTPUT_DIR/1.csv /home/ubuntu/mysql-files
+docker cp $MYSQL_CONTAINER:$OUTPUT_DIR/2.csv /home/ubuntu/mysql-files
+docker cp $MYSQL_CONTAINER:$OUTPUT_DIR/3.csv /home/ubuntu/mysql-files
+
+mkdir /home/ubuntu/data
+
+sudo mv /home/ubuntu/mysql-files /home/ubuntu/data
