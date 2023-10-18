@@ -54,4 +54,5 @@ docker cp $MYSQL_CONTAINER:$OUTPUT_DIR/3.csv /home/ubuntu/mysql-files
 
 mkdir /home/ubuntu/data
 
+sudo mv /home/ubuntu/$desired_output /home/ubuntu/data
 sudo mv /home/ubuntu/mysql-files /home/ubuntu/data
