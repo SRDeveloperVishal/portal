@@ -1,10 +1,7 @@
 # portal
 cd portal
-# Move portal.sh 
-mv portal.sh /home/ubuntu/
-mv data.sh /home/ubuntu/
-# execute portal.sh
+# execute portal.sh for portal creation
 ./portal.sh
 
-# execute data.sh for data backup
+# execute data.sh for data backup 
 ./data.sh
