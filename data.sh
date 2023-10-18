@@ -48,9 +48,9 @@ docker exec $MYSQL_CONTAINER mysql -u $DB_USER -p$DB_PASSWORD -e "$QUERY3"
 mkdir mysql-files
 
 # Copy the SQL query results to your current directory
-docker cp $MYSQL_CONTAINER:$OUTPUT_DIR/1.csv /home/ubuntu/mysql-files
-docker cp $MYSQL_CONTAINER:$OUTPUT_DIR/2.csv /home/ubuntu/mysql-files
-docker cp $MYSQL_CONTAINER:$OUTPUT_DIR/3.csv /home/ubuntu/mysql-files
+docker cp $MYSQL_CONTAINER:$OUTPUT_DIR/1.csv /home/ubuntu/mysql-files/
+docker cp $MYSQL_CONTAINER:$OUTPUT_DIR/2.csv /home/ubuntu/mysql-files/
+docker cp $MYSQL_CONTAINER:$OUTPUT_DIR/3.csv /home/ubuntu/mysql-files/
 
 mkdir /home/ubuntu/data
 
