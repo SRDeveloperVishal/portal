@@ -32,6 +32,12 @@ DB_NAME="openedx"  # Replace with your database name
 # Define the path to the MySQL container
 MYSQL_CONTAINER="tutor_local-mysql-1"
 
+# remove old mysql-files dir
+docker exec -u root $MYSQL_CONTAINER rm -rf /var/lib/mysql-files
+
+# Creating Mysql-files dir
+docker exec -u root $MYSQL_CONTAINER mkdir /var/lib/mysql-files
+
 # Specify the directory where MySQL will store output files within the container
 OUTPUT_DIR="/var/lib/mysql-files/"
 
