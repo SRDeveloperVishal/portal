@@ -39,7 +39,7 @@ docker exec -u root $MYSQL_CONTAINER rm -rf /var/lib/mysql-files
 docker exec -u root $MYSQL_CONTAINER mkdir /var/lib/mysql-files
 
 # Specify the directory where MySQL will store output files within the container
-OUTPUT_DIR="/var/lib/mysql-files/"
+OUTPUT_DIR="/var/lib/mysql-files"
 
 # SQL queries
 QUERY1="use $DB_NAME; select * INTO OUTFILE '$OUTPUT_DIR/1.csv' FIELDS TERMINATED BY ',' ENCLOSED BY '\"' LINES TERMINATED BY '\n' from submissions_studentitem;"
