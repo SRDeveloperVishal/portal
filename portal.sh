@@ -36,7 +36,9 @@
     
     # give permission to docker user
     sudo usermod -aG docker $USER
-    
+
+    sudo chown $USER:docker /var/run/docker.sock
+
     # install docker compose
     sudo curl -SL https://github.com/docker/compose/releases/download/v2.5.0/docker-compose-linux-x86_64 -o /usr/local/bin/docker-compose 
 
