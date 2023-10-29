@@ -44,7 +44,9 @@
 
     # give permission to docker compose 
     sudo chmod +x /usr/local/bin/docker-compose
-   
+
+    sudo systemctl enable docker
+
     # git clone tutor binary
     sudo curl -L "https://github.com/overhangio/tutor/releases/download/v13.1.5/tutor-$(uname -s)_$(uname -m)" -o /usr/local/bin/tutor
    
