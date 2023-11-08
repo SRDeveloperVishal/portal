@@ -18,10 +18,10 @@ desired_output=$(echo "$output" | awk -F'course-v1:' '{print $2}' | awk -F'+' '{
 
 # access docker tutor lms
 
-docker cp tutor_local-lms-1:/openedx/media/$desired_output /home/ubuntu/.
+docker cp tutor_local-lms-1:/openedx/media/$desired_output /home/$USER/.
 
 # Define the path to your config.yml file
-CONFIG_FILE="/home/ubuntu/.local/share/tutor/config.yml"
+CONFIG_FILE="/home/$USER/.local/share/tutor/config.yml"
 
 # Extract the MySQL root password from config.yml using grep and awk
 DB_PASSWORD=$(grep 'MYSQL_ROOT_PASSWORD' "$CONFIG_FILE" | awk '{print $2}')
@@ -48,14 +48,14 @@ docker exec $MYSQL_CONTAINER mysql -u $DB_USER -p$DB_PASSWORD -e "$QUERY1"
 docker exec $MYSQL_CONTAINER mysql -u $DB_USER -p$DB_PASSWORD -e "$QUERY2"
 docker exec $MYSQL_CONTAINER mysql -u $DB_USER -p$DB_PASSWORD -e "$QUERY3"
 
-mkdir /home/ubuntu/mysql-files
+mkdir /home/$USER/mysql-files
 
 # Copy the SQL query results to your current directory
-docker cp $MYSQL_CONTAINER:$OUTPUT_DIR/1.csv /home/ubuntu/mysql-files/
-docker cp $MYSQL_CONTAINER:$OUTPUT_DIR/2.csv /home/ubuntu/mysql-files/
-docker cp $MYSQL_CONTAINER:$OUTPUT_DIR/3.csv /home/ubuntu/mysql-files/
+docker cp $MYSQL_CONTAINER:$OUTPUT_DIR/1.csv /home/$USER/mysql-files/
+docker cp $MYSQL_CONTAINER:$OUTPUT_DIR/2.csv /home/$USER/mysql-files/
+docker cp $MYSQL_CONTAINER:$OUTPUT_DIR/3.csv /home/$USER/mysql-files/
 
-mkdir /home/ubuntu/data
+mkdir /home/$USER/data
 
-sudo mv /home/ubuntu/$desired_output /home/ubuntu/data
-sudo mv /home/ubuntu/mysql-files /home/ubuntu/data
+sudo mv /home/$USER/$desired_output /home/$USER/data
+sudo mv /home/$USER/mysql-files /home/$USER/data
