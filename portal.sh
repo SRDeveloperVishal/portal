@@ -35,8 +35,10 @@
       echo "Enter CONTACT EMAIL:"
       read CONTACT_EMAIL
 
-      # tutor config for portel
+      # tutor plugins
+      tutor plugins enable forum && tutor config save
 
+      # tutor config for portel
       tutor config save --set CMS_HOST="studio.$LMS_HOST.rcmoocs.in"  \
       --set LMS_HOST="$LMS_HOST.rcmoocs.in"\
       --set ENABLE_HTTPS=true \
@@ -141,8 +143,11 @@
       echo "Enter CONTACT EMAIL:"
       read CONTACT_EMAIL
 
-      # tutor config for portel
+      # tutor plugins
+      tutor plugins enable forum && tutor config save
 
+      # tutor config for portel
+      
       tutor config save --set CMS_HOST="studio.$LMS_HOST.rcmoocs.in"  \
       --set LMS_HOST="$LMS_HOST.rcmoocs.in"\
       --set ENABLE_HTTPS=true \
