@@ -64,7 +64,7 @@
 
       # update lms and lms worker docker image
       YAML_FILE=".local/share/tutor/env/local/docker-compose.yml"
-      NEW_IMAGE="7503444967/maple-edx-server:volume-final-api.0.7"
+      NEW_IMAGE="7503444967/maple-edx-server:volume-final-api.0.8"
 
       # Use sed to replace the image line for the 'lms' service
       sed -i "/^ *lms:/,/^ *[^ ]/ s|image: docker.io/overhangio/openedx:13.1.5|image: $NEW_IMAGE|" "$YAML_FILE"  
@@ -161,7 +161,7 @@
 
       # update lms and lms worker docker image
       YAML_FILE=".local/share/tutor/env/local/docker-compose.yml"
-      NEW_IMAGE="7503444967/maple-edx-server:volume-final-api.0.7"
+      NEW_IMAGE="7503444967/maple-edx-server:volume-final-api.0.8"
 
       # Use sed to replace the image line for the 'lms' service
       sed -i "/^ *lms:/,/^ *[^ ]/ s|image: docker.io/overhangio/openedx:13.1.5|image: $NEW_IMAGE|" "$YAML_FILE"  
