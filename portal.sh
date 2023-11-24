@@ -42,7 +42,6 @@
       tutor config save --set CMS_HOST="studio.$LMS_HOST.rcmoocs.in"  \
       --set LMS_HOST="$LMS_HOST.rcmoocs.in"\
       --set ENABLE_HTTPS=true \
-      --set COURSE_EMAIL=$COURSE_EMAIL \
       --set SMTP_HOST="email-smtp.ap-south-1.amazonaws.com" \
       --set SMTP_PORT=587 \
       --set SMTP_USE_TLS=true \
@@ -141,7 +140,6 @@
       tutor config save --set CMS_HOST="studio.$LMS_HOST.rcmoocs.in"  \
       --set LMS_HOST="$LMS_HOST.rcmoocs.in"\
       --set ENABLE_HTTPS=true \
-      --set COURSE_EMAIL=$COURSE_EMAIL \
       --set SMTP_HOST="email-smtp.ap-south-1.amazonaws.com" \
       --set SMTP_PORT=587 \
       --set SMTP_USE_TLS=true \
