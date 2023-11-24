@@ -26,14 +26,14 @@
       read LMS_HOST
       echo "Enter Course Email:"
       read COURSE_EMAIL
-      echo "Enter SMTP HOST:"
-      read SMTP_HOST
+    #   echo "Enter SMTP HOST:"
+    #   read SMTP_HOST
       echo "Enter SMTP USERNAME:"
       read SMTP_USERNAME
       echo "Enter SMTP PASSWORD:"
       read SMTP_PASSWORD
-      echo "Enter CONTACT EMAIL:"
-      read CONTACT_EMAIL
+    #   echo "Enter CONTACT EMAIL:"
+    #   read CONTACT_EMAIL
 
       # tutor plugins
       tutor plugins enable forum && tutor config save
@@ -43,12 +43,19 @@
       --set LMS_HOST="$LMS_HOST.rcmoocs.in"\
       --set ENABLE_HTTPS=true \
       --set COURSE_EMAIL=$COURSE_EMAIL \
-      --set SMTP_HOST="$SMTP_HOST" \
+      --set SMTP_HOST="email-smtp.ap-south-1.amazonaws.com" \
       --set SMTP_PORT=587 \
       --set SMTP_USE_TLS=true \
       --set SMTP_USERNAME="$SMTP_USERNAME" \
       --set SMTP_PASSWORD="$SMTP_PASSWORD" \
-      --set CONTACT_EMAIL="$CONTACT_EMAIL" \
+      --set CONTACT_EMAIL="tlc@ramanujancollege.ac.in" \
+      
+      # Get the path to the lms.env.json file
+      lms_env_file="$(tutor config printroot)/env/apps/openedx/config/lms.env.json"
+      
+      # Add Course Email
+      sudo apt-get install jq -y
+      jq --arg COURSE_EMAIL "$COURSE_EMAIL" '. | . + { "COURSE_EMAIL": $COURSE_EMAIL }' "$lms_env_file" > tmp.json && mv tmp.json "$lms_env_file"
 
       #tutor build 
       tutor local start -d
@@ -76,24 +83,6 @@
 
   
   else
-      #remove docker images
-      docker rm -vf $(docker ps -aq)
-      docker rmi -f $(docker images -aq)
-
-      #uninstall docker 
-      sudo apt purge docker.io -y
-
-      #remove docker compose
-      sudo rm -rf /usr/local/bin/docker-compose
-
-      #remove tutor file
-      sudo rm -rf "$(tutor config printroot)"
-
-      sudo rm -rf /usr/local/bin/tutor
-
-      # apt auto remove
-      sudo apt autoremove -y
-
       # Update the package cache
       sudo apt-get update
 
@@ -104,6 +93,7 @@
       gnupg \
       lsb-release -y
 
+      sudo apt-get install jq -y
       # downloading docker for ubutnu
       curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg -y
 
@@ -134,14 +124,14 @@
       read LMS_HOST
       echo "Enter Course Email:"
       read COURSE_EMAIL
-      echo "Enter SMTP HOST:"
-      read SMTP_HOST
+    #   echo "Enter SMTP HOST:"
+    #   read SMTP_HOST
       echo "Enter SMTP USERNAME:"
       read SMTP_USERNAME
       echo "Enter SMTP PASSWORD:"
       read SMTP_PASSWORD
-      echo "Enter CONTACT EMAIL:"
-      read CONTACT_EMAIL
+    #   echo "Enter CONTACT EMAIL:"
+    #   read CONTACT_EMAIL
 
       # tutor plugins
       tutor plugins enable forum && tutor config save
@@ -152,14 +142,18 @@
       --set LMS_HOST="$LMS_HOST.rcmoocs.in"\
       --set ENABLE_HTTPS=true \
       --set COURSE_EMAIL=$COURSE_EMAIL \
-      --set SMTP_HOST="$SMTP_HOST" \
+      --set SMTP_HOST="email-smtp.ap-south-1.amazonaws.com" \
       --set SMTP_PORT=587 \
       --set SMTP_USE_TLS=true \
       --set SMTP_USERNAME="$SMTP_USERNAME" \
       --set SMTP_PASSWORD="$SMTP_PASSWORD" \
-      --set CONTACT_EMAIL="$CONTACT_EMAIL" \
+      --set CONTACT_EMAIL="tlc@ramanujancollege.ac.in" \
 
-
+      # Get the path to the lms.env.json file
+      lms_env_file="$(tutor config printroot)/env/apps/openedx/config/lms.env.json"
+      
+      # Add Course Email
+      jq --arg COURSE_EMAIL "$COURSE_EMAIL" '. | . + { "COURSE_EMAIL": $COURSE_EMAIL }' "$lms_env_file" > tmp.json && mv tmp.json "$lms_env_file"
 
       #tutor build 
       tutor local start -d
